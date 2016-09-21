@@ -1,0 +1,9 @@
+Formal Proof of the Efficacy of Larger Alphabets in DFS
+
+Finite state machines with a larger alphabet would be more powerful, in that it could encode more information, at the expense of efficiency. To prove this, imagine an alphabet containing only the letters 'a', 'b', 'c', and 'd'. Such an alphabet could have four pathways coming off each node while remaining strictly deterministic. Furthermore, if you needed to encode information in those four letters, you would be able to minimize the size of strings required to encode, while making sure sufficient data was stored. For example, if one wanted to accept only the word "cab", then this state machine would be very effective and only take about three transitions. Attempting to do this with only 'a's or '1's would be far more lenghty. The user would have to make a code made up of solely those characters that could be translated to "cab". The loss of efficiency comes with the wasted letter. In that same example used above, the 'd' character is never used, and therefore is ultimately useless to the purpose of the machine.
+
+Regular Expressions:
+Construct a regular expression that matches all and only those strings that contain exactly one 1 
+(and any number of 0s). For example, 1, 0010, 100; but not 0 or 101. 
+
+0*10*
