@@ -25,3 +25,6 @@ c) All strings (over {0,1}) consisting of a substring w followed by the reverse 
 [The strings 00100100 and 11110101011010101111 are in this language; the strings 00100 and 010101are not.]
 
 Assume the language L is regular. If it is regular, it must have some pumping length P. Let us assume that the string S is contained in the language and can be defined as S=(0^p)(1^p)(0^p). Let us say the pumping length is 2 and the string is now '001100.' We can divide this up into x, the string before the loop, y, the loop itself, and z, the string after the loop. We will say x = 0, y = 0, and z = 1100, such that x(y^i)z is in L. If i=0, the total number of 0's would be less on the left side than the right, which means the string is not made up of a string followed by its reverse. Thereby, a contradiction has occurred and L is not a regular language.
+
+3)
+I used the pumping game's first exercise as the basis for my PDA, which requires that the number of 'a' characters present be less than the number of 'b' characters present.
