@@ -34,10 +34,10 @@ For the following problem, assume that it costs 1 unit to access a structure -- 
 
 Assume that you have n elements stored in an array and the same n elements stored in a linked list; you have no other references to these data structures.  You may assume that n > 10.  How much does it cost to perform each of the following actions?
 
-  A. Read the value of the first element in the array?  In the list?
-  B. Read the value of the seventh element in the array?  In the list?
-  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]
-  D. Delete the fifth element from the array?  From the list?
+  A. Read the value of the first element in the array?  In the list?   1; 1
+  B. Read the value of the seventh element in the array?  In the list? 1; 7
+  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]  Adding it to the beginning or end of the array would be cheapest. As long as no part of the array is overwritten, there is no need to rewrite or move around data that is already in the array. The list should add the new element at the front, because that is the cheapest part of the list to reach, and from there the new element can be added with a pointer to the original first element. 1; 1
+  D. Delete the fifth element from the array?  From the list?  1; 5 (assuming that the list takes 4 units to get to element 4 and 1 unit to rewrite the "next" pointer to the 6th element.
   E. Confirm that a particular element -- say x -- is present in the array?  In the list?
   F. Confirm that a particular element -- say y -- is NOT present in the array?  In the list?
 
