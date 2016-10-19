@@ -36,14 +36,14 @@ Assume that you have n elements stored in an array and the same n elements store
 
   A. Read the value of the first element in the array?  In the list?   1; 1
   B. Read the value of the seventh element in the array?  In the list? 1; 7
-  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]  Adding it to the beginning or end of the array would be cheapest. As long as no part of the array is overwritten, there is no need to rewrite or move around data that is already in the array. The list should add the new element at the front, because that is the cheapest part of the list to reach, and from there the new element can be added with a pointer to the original first element. 1; 1
-  D. Delete the fifth element from the array?  From the list?  1; 5 (assuming that the list takes 4 units to get to element 4 and 1 unit to rewrite the "next" pointer to the 6th element.
-  E. Confirm that a particular element -- say x -- is present in the array?  In the list?
-  F. Confirm that a particular element -- say y -- is NOT present in the array?  In the list?
+  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]  Assuming this is a static array, it is of fixed size and therefore incapable of having an element added to it. You could make a new array of the appropriate size and copy over the original content in addition to the added element, which would be roughly n+1 units. The list should add the new element at the front, because that is the cheapest part of the list to reach, and from there the new element can be added with a pointer to the original first element. 1; 1
+  D. Delete the fifth element from the array?  From the list?  The static array can't delete elements any more than it can add them, but you could make a new array of a smaller size and copy over all the elements except the fifth one.  n-1; 5 (assuming that the list takes 4 units to get to element 4 and 1 unit to rewrite the "next" pointer to the 6th element.
+  E. Confirm that a particular element -- say x -- is present in the array?  In the list?  1;element  (the list would start at the beginning and check each element untill it found the right one. In the worst case, this could be an n unit operation, but in the best case it could only take one unit. This being if the desired element is last in the list or first respectively.
+  F. Confirm that a particular element -- say y -- is NOT present in the array?  In the list? 1;element  (again, if the list contains the element, the statement will be proved false before going through the entire list and stop at the desired element, but if we assume the element is not in the list, it becomes an n unit operation.
 
 Now assume that you can maintain one extra piece of storage for the data structure.  In the case of the array, you may want to maintain a length reference.
 In the case of the linked list, what would be similarly helpful?
-G. How much would it cost now to add an element to the end of the array?  To add an element to the end of the list?
+G. How much would it cost now to add an element to the end of the array?  To add an element to the end of the list?  In the case of the array, if we assume the extra piece of storage is on the end, adding an element to the end would take only 1 unit. If, in the case of the list, we use the extra storage to hold the final element in the list, the operation costs only 1 unit.
 H. How much would it cost now to delete an element from the array?  From the list?  What if it were the final element?  The penultimate element?
 
 Finally, assume that both the array and the linked list are sorted, i.e., that their elements are in some predictable order (say, comparable by < or <=).
