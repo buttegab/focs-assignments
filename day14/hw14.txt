@@ -5,7 +5,7 @@ You may edit your answers into this file, or add a separate file in the same dir
 If you add a separate file, please include the following at the top.
 In either case, add your name and check one of the boxes.
 
-Student Name: Frankly Olin [change to your name]
+Student Name: Gabriel Butterick [change to your name]
 Check one:
 [ ] I completed this assignment without assistance or external resources.
 [ ] I completed this assignment with assistance from ___
@@ -19,13 +19,13 @@ For each of the following pairs of functions, identify a multiplier and a minimu
 
 
   A. 367n+1098     and     2n                  [n0 = 40; k=200]
-  B. n^2 + 2n + 6    and     6n^2 - 25
-  C. n^3 + n^2 - 2n     and     6n^2 - 25
-  D. 869,438    and    923
-  E. 2^n    and    3^n
-  F. 3^n    and    2^n
-  G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n]
-  H. log_10 n^2    and     log_2 n
+  B. n^2 + 2n + 6    and     6n^2 - 25         [n0 = 3; k=1]
+  C. n^3 + n^2 - 2n     and     6n^2 - 25      This can't work because f(n) scales faster than g(n) can, no constant can mitigate that growth.
+  D. 869,438    and    923                      [n0=0; k=942]
+  E. 2^n    and    3^n                          [n0=1; k=1]
+  F. 3^n    and    2^n                          f(n) scales faster than g(n) at a non-constant rate, so no constant multiplier can make g(n) keep up.
+  G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n] [n0 = 20; k=5]
+  H. log_10 n^2    and     log_2 n              []
 
 
 II. Linear data structures
