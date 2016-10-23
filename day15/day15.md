@@ -6,9 +6,9 @@ You may edit your answers into this file, or add a separate file in the same dir
 If you add a separate file, please include the following at the top:
 
 ```
-Student Name: Frankly Olin [change to your name]
+Student Name: Gabriel Butterick [change to your name]
 Check one:
-[ ] I completed this assignment without assistance or external resources.
+[x] I completed this assignment without assistance or external resources.
 [ ] I completed this assignment with assistance from ___
    and/or using these external resources: ___
 ```
@@ -44,7 +44,7 @@ Ans:  all elements of TI <= x <= all elements of T2
  T1    T2
 ```
 
-Ans:  
+Ans:  all elements of T1 <= c <= all elements of T2 and all elements of T1, T2, and c are <= b <= all elements of T3
 
 
 
@@ -59,7 +59,7 @@ Ans:
        T2    T3
 ```
 
-Ans:  
+Ans:  all elements of T2 <= e <= all elements of T3, T1 <= d <= e
 
 
 
@@ -77,7 +77,7 @@ Ans:
     T2     T3
 ```
 
-Ans:  
+Ans:  all elements of T2 <= h <= all elements of T3, all elements of T1 <= g <= h, g <= f <= all elements of T4
 
 
 
@@ -89,10 +89,62 @@ What other tree structures containing three internal nodes -- x, y, and z -- can
 [Hint:  There should be four more shapes.]  
 The relationship among x, y, and z doesn't matter.  For convenience, we've arbitrarily labeled them top to bottom and the subtrees left to right.
 
+```
+         x
+       /   \
+      /     \
+     y       z
+    / \     / \
+   /   \   T2  T3
+ T1    T4
+
+```
+Ans: T1 <= y <= T4, T2 <= z <= T3, y <= x <= z
+
+
+          x
+         / \
+        /   \
+       y    T4
+      / \
+     /   \
+    z    T1
+   / \
+  /   \
+ T2   T3
+```
+Ans: T2 <= z <= T3, z <= y <= T1, y <= x <= T4
+
+
+```
+        x
+       / \
+      /   \
+     T1    y
+          / \
+         /   \
+        T2    z
+             / \
+            /   \
+           T3   T4
+```
+Ans: T1 <= x <= y, T2 <= y <= z, T3 <= z <= T4
 
 
 
-
+```
+        x
+       / \
+      /   \
+     T1    y
+          / \
+         /   \
+        z    T2
+       / \
+      /   \
+     T3   T4
+```
+Ans : T1 <= x <= y, T3 <= z <= T4, z <= y <= T2
 
 <expand as needed>
 
@@ -111,6 +163,11 @@ For EVERY internal node (x and y), the depth of the internal node's left subtree
 
 Does this property hold for any of the three-internal-node trees?  Which ones?  Which ones are NOT almost-balanced?  (We call these unbalanced.)
 
+For ease of use, assume the five three internal node trees are called 1,2,3,4,5 respectively in the order they appear on this page.
+
+Balanced/Almost Balanced: 2
+Unbalanced: 1, 3, 4, 5
+
 
 ## IV.  Maintaining balance
 
@@ -119,12 +176,80 @@ Observe the following:
 
 If you are given a binary tree of the form in question 1, you can transform them into the form in question 2 (and vice versa) while preserving the binary search property.  
 [Since they are both almost-balanced, this doesn't help, but it also doesn't hurt.]  
+```
+        b                  c        
+       / \                / \           
+      /   \              /   \           
+     c     T3  -->      T1    b               
+    / \                      / \            
+   /   \                    /   \       
+ T1    T2                  T2   T3          
+```
+
 
 ### 6. 
 
 Use this insight to show how to modify each of the unbalanced tree forms with three internal nodes into an almost-balanced tree that preserves the binary search property.
 
 
+
+1)
+```
+        f                                   
+       / \                                 
+      /   \                                  
+     g     T4                       h             
+    / \                            / \         
+   /   \          -->             /   \        
+ T1     h                        g     f    
+       / \                      / \   / \       
+      /   \                    /   \ T3  \   
+    T2     T3                 T1    T2   T4 
+```
+
+3)
+          x                         y                    
+         / \                       / \                       
+        /   \                     /   \            
+       y    T4                   z     x                 
+      / \                       / \   / \           
+     /   \                     /  T3 /   \              
+    z    T1      -->          T2    T1   T4                
+   / \                                            
+  /   \                                           
+ T2   T3                                                
+```
+
+4)
+
+```
+        x                          y                  
+       / \                        / \                      
+      /   \                      /   \               
+     T1    y                    x     z           
+          / \     -->          / \   / \              
+         /   \                /   \ T3  \          
+        T2    z              T1   T2     T4         
+             / \                               
+            /   \                                    
+           T3   T4                                         
+```
+
+5)
+
+
+```
+        x                        z               
+       / \                      / \                      
+      /   \                    /   \              
+     T1    y                  x     y          
+          / \    -->         / \   / \                    
+         /   \              /   \ T4  \                
+        z    T2            T1   T3    T2             
+       / \                                    
+      /   \                                    
+     T3   T4                                     
+```
 
 
 ## V.  Rebalancing
@@ -143,28 +268,48 @@ For EVERY internal node (x and y), the depth of the internal node's left subtree
      /\      /\  
     /  \    /  \ 
    3   7   12   16  
-  /\       /    /\ 
- /  \     /    /  \ 
-2    5   10   15   20
+  /\      /     /\ 
+ /  \    /     /  \ 
+2    5  10    15   20
                    /
                   /
                  18
 ```
 
-
+It is almost-balanced.
 
 ### 8. 
 
 Insert the value 13 into this tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
-
+It goes on the right subtree of 12, and the tree remains almost balanced.
 
 ### 9. 
 
 Insert the value 17 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
+The 20 and 18 switch positions, but with the 20 taking its place in the right subtree of 18. The 17 goes in the left subtree of 18. The resulting tree is almost balanced.
+
+
 
 ### 10. 
 
 Insert the value 4 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
+
+```
+         8
+        / \
+       /   \
+      6     14
+     /\      /\  
+    /  \    /  \ 
+   3   7   12   16  
+  /\   |   /    /\ 
+ /  \  3  /    /  \ 
+2    4  10    15   20
+                   /
+                  /
+                 18
+```
+That's what it should look like after moving things around. It is almost-balanced.
 
 
 ### 11. 
