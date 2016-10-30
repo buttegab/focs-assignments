@@ -1,5 +1,6 @@
-from queue import Queue
-
+from Queue import Queue
+# import Queue
+# from Queue import queue
 
 class Graph(object):
     """A minimal graph using adjacency lists."""
@@ -24,21 +25,55 @@ class Graph(object):
         raise NotImplementedError()
 
 
+# def bfs(graph, start):
+#     remaining_nodes = Queue()
+#     visited = set()
+
+#     def visit(node):
+#         print(node)
+#         visited.add(node)
+#         for tail in graph.successors(node):
+#             if tail not in visited:
+#                 remaining_nodes.put(tail)
+
+#     remaining_nodes.put(start)
+#     while not remaining_nodes.empty():
+#         n = remaining_nodes.get()
+#         visit(n)
+
 def bfs(graph, start):
     remaining_nodes = Queue()
     visited = set()
-
+    edges = []
+    counter = 0
+    dist = {}
+    dist[start] = 0
     def visit(node):
-        print(node)
+        # print(node)
         visited.add(node)
+        
+            
+
         for tail in graph.successors(node):
+            
             if tail not in visited:
+                dist[tail] = dist[node] + 1
                 remaining_nodes.put(tail)
+                edges.append((node, tail))
+        
 
     remaining_nodes.put(start)
     while not remaining_nodes.empty():
+        counter +=1
         n = remaining_nodes.get()
         visit(n)
+
+    print dist
+    return Graph(visited, edges)
+
+
+
+
 
 g = Graph(['a', 'b', 'c', 'd', 'e'], [('a', 'b'), ('a', 'c'), ('b', 'd'), ('b', 'e'), ('e', 'a')])
 bfs(g, 'a')
